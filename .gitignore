@@ -1,0 +1,13 @@
+node_modules
+yarn.lock
+dist
+client
+/.idea
+/.env
+certs
+logs
+/data
+/recordings
+/clamav
+package-lock.json
+id_rsa

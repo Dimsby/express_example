@@ -1,0 +1,12 @@
+{
+  apps : [
+    {
+      name      : "backend",
+      script    : "ts-node",
+      interpreter: "none",
+      args: "src/app.ts -o ./out-backend.log -e ./err-backend.log"
+    }
+  ]
+}
+
+

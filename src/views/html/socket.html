@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Socket test</title>
+</head>
+
+<script src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+        integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs"
+        crossorigin="anonymous"></script>
+
+<body>
+<form>
+    <input type="text" placeholder="user id" id="userId"/>
+    <input type="button" value="Connect" id="btn"/>
+    <p>requires auth cookie for registered user</p>
+    <p id="socketId"></p>
+</form>
+
+<script>
+    (function () {
+        document.getElementById('btn').addEventListener('click', function () {
+            const id = document.getElementById('userId').value
+            const socket = io(id ? ('/?userId='+id) : '/');
+
+            socket.on('connect', () => {
+                document.getElementById('socketId').innerHTML = socket.id;
+            })
+
+            socket.on('user_'+id, (data) => {
+                document.body.innerHTML = '';
+                document.write(JSON.stringify(data));
+            });
+        }, false);
+    })();
+
+</script>
+</body>
+
+</html>
